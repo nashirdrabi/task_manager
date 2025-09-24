@@ -348,18 +348,5 @@ class DashboardViewModel extends BaseViewModel<DashboardNavigator, DashboardRepo
   }).toList();
  }
 
- // Search tasks by title or description
- Future<List<Map<String, dynamic>>> searchTasks(String query) async {
-  if (query.trim().isEmpty) return await getAllTasks();
 
-  List<Map<String, dynamic>> allTasks = await getAllTasks();
-  String searchQuery = query.toLowerCase().trim();
-
-  return allTasks.where((task) {
-   String title = task['title']?.toString().toLowerCase() ?? '';
-   String description = task['description']?.toString().toLowerCase() ?? '';
-
-   return title.contains(searchQuery) || description.contains(searchQuery);
-  }).toList();
- }
 }
